@@ -1,0 +1,1 @@
+see apue-code/threads/threadid.c for good/simple thread creation
