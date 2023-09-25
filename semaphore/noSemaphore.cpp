@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <thread>
 #include <mutex>
-#include<condition_variable>
+#include <condition_variable>
 #include "primes.cpp"
 
 
@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
   int firstPrime;
   if (argc !=3)
   {
-        printf ("Usage: producerConsumer -n prime_number\n");
+        printf ("Usage: %s -n prime_number\n", argv[0]);
   }
   else
   {

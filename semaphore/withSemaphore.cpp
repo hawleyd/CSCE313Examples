@@ -1,37 +1,30 @@
 #include <iostream>
 #include <queue>
 #include <unistd.h>
-#include <thread>
-#include <mutex>
-#include<condition_variable>
 #include "primes.cpp"
+#include "semaphore.cpp"
 
 
 using namespace std;
 
 bool done = false;
-queue<int> list;
-condition_variable cv;
-mutex m;
+std::queue<int> list;
+Semaphore s(0);
 
 void PrimeProducer (int *p){
     int primer = *p;
     int data = Primes::getNextPrime(primer);
     cout << "In producer" << endl;
-    m.lock();
     list.push(data);
-    m.unlock();
-    cv.notify_all();
+    s.post();
     cout << "I am a producer - I put: " << data << endl;
 }
 
 void PrimeConsumer (){
   cout << "In consumer" << endl;
-  unique_lock<mutex> ul (m);
-  cv.wait (ul, []{return list.size() > 0;});
+  s.wait();
   int data = list.front();
   list.pop();
-  ul.unlock ();
   cout << "I am a consumer, I got: " << data << endl;
 }
 
