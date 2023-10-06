@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     write(fd2, "ef", 2);
     // playing with file position
     lseek (fd1, 0, SEEK_SET);
-    write (fd1, "ab", 2);
+    write (fd3, "ab", 2);
     return 0;
 }
 

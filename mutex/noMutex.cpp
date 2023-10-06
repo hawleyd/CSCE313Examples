@@ -22,7 +22,7 @@ void func(int *p, int x)
 int main (int argc, char* argv[])
 {
     int data = 0;
-    int interations = atoi(argv[1]);
+    int interations;
 
     if (argc !=2)
     {
@@ -30,6 +30,7 @@ int main (int argc, char* argv[])
     }
     else
     {
+        interations = atoi(argv[1]);
         thread firstThread(func, &data, interations);
         thread secondThread(func, &data, interations);
         cout << "Main, First and Second are now concurrent" << endl;

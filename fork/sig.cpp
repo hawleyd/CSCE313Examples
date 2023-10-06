@@ -14,11 +14,13 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	else if (c_pid > 0) {
+		//parent
 		signal(SIGCHLD, SIG_IGN);
 		cout << "printed from parent process " << getpid()
 			<< endl;
 	}
 	else {
+		//child
 		cout << "printed from child process " << getpid()
 			<< endl;
 	}

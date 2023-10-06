@@ -4,6 +4,7 @@
 using namespace std;
 
 void my_handler (int sig){
+    cout << "I got a signal: " << getpid() << endl;
     wait (0);
 }
 
@@ -16,9 +17,9 @@ int main (){
     for (int i=1; i<=5; i++){
         int pid = fork ();
         if (pid == 0){
-            cout << "Night" << endl;
-            sleep (i);
-            cout << "Up and out" << endl;
+            cout << "Night: " << getpid() << endl;
+            sleep (i*4);
+            cout << "Up and out: " << getpid() << endl;
             return 0; 
         }
     }

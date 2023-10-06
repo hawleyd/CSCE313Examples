@@ -25,17 +25,18 @@ void func(int *p, int x, mutex *m)
 int main (int argc, char* argv[])
 {
     int data = 0;
-    int interations = atoi(argv[1]);
+    int iterations = 0;
     mutex m;
 
     if (argc !=2)
     {
-        printf ("Usage: noMutex 4");
+        printf ("Usage: %s 4", argv[0]);
     }
     else
     {
-        thread firstThread(func, &data, interations, &m);
-        thread secondThread(func, &data, interations, &m);
+        iterations = atoi(argv[1]);
+        thread firstThread(func, &data, iterations, &m);
+        thread secondThread(func, &data, iterations, &m);
         cout << "Main, First and Second are now concurrent" << endl;
         firstThread.join();    //wait to finish
         secondThread.join();    //wait to finish
