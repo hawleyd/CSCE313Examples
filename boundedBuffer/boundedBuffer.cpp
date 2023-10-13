@@ -15,15 +15,19 @@ std::queue<int> list;
 Semaphore fullSlots(0);
 Semaphore emptySlots(buf_size);
 Semaphore syncPrimes(1);
+Semaphore otherPrime(1);
 
 void PrimeProducer (int *p){
     int primer = *p;
     int data;
 
+    otherPrime.wait();
     if (primer > nextPrime)
     {
       nextPrime = primer;
     }
+    otherPrime.post();
+
     cout << "In producer [" << pthread_self() << "] with " << nextPrime << endl;
 
     syncPrimes.wait();
