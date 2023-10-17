@@ -45,6 +45,7 @@ void PrimeProducer (int *p){
 
 void PrimeConsumer (){
   cout << "In consumer [" << pthread_self() << "]" << endl;
+  sleep(10);
 
   fullSlots.wait();
   syncPrimes.wait();
