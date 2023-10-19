@@ -20,4 +20,3 @@ all: clean $(BINS)
 
 clean:
 	rm -f capture
-

@@ -178,7 +178,7 @@ int main(int argc,char *argv[])
     char *dev;
     int i=0;
     int opt;                /*command line options*/
-    char filter_exp[] = "portrange 1-100";
+    char filter_exp[] = "portrange 8080-8082";
     
     bpf_u_int32 mask;		/* The netmask of our sniffing device */
     bpf_u_int32 net;		/* The IP of our sniffing device */
