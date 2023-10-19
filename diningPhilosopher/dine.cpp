@@ -85,7 +85,7 @@ void* philosopher(void* num)
 
 	while (1) {
 
-		int* i = num;
+		int* i = (int *)num;
 
 		sleep(1);
 

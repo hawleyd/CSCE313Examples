@@ -18,15 +18,16 @@ Semaphore syncPrimes(1);
 Semaphore otherPrime(1);
 
 void PrimeProducer (int *p){
-    int primer = *p;
-    int data;
 
     otherPrime.wait();
+
+    int primer = *p;
+    int data;
+    
     if (primer > nextPrime)
     {
       nextPrime = primer;
     }
-    otherPrime.post();
 
     cout << "In producer [" << pthread_self() << "] with " << nextPrime << endl;
 
@@ -37,6 +38,8 @@ void PrimeProducer (int *p){
     list.push(data);
     nextPrime = data;
 
+    otherPrime.post();
+
     syncPrimes.post();
     fullSlots.post();
 
@@ -45,7 +48,7 @@ void PrimeProducer (int *p){
 
 void PrimeConsumer (){
   cout << "In consumer [" << pthread_self() << "]" << endl;
-  sleep(10);
+  //sleep(10);
 
   fullSlots.wait();
   syncPrimes.wait();
