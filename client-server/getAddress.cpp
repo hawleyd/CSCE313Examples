@@ -120,6 +120,6 @@ int main (int argc, char *argv[]) {
 
     printf("Looking up %s\n", address);
     status = getAddr(address);
-    printf("Returned %d addresses\n", status);
+    printf("Returned %d address(es)\n", status);
     return 0;
 }
