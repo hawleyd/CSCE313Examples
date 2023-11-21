@@ -2,7 +2,7 @@ CXX=g++
 CXXFLAGS=-std=c++17 -lssl -lcrypto
 
 
-SRCS=decrypt.cpp encrypt.cpp encryptFile
+SRCS=decrypt.cpp encrypt.cpp
 BINS=$(patsubst %.cpp,%.exe,$(SRCS))
 DEPS=
 
@@ -21,5 +21,4 @@ all: clean $(BINS)
 clean:
 	rm -f decrypt
 	rm -f encrypt
-	rm -f encryptFile
 

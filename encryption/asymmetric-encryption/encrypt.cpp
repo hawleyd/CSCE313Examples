@@ -94,7 +94,6 @@ unsigned char plainData[sizeof(argv[2])];
 char publicKeyFileName[] = "pubkey.pem";
 
 memcpy(plainData, argv[2], strlen(argv[2]));
-//printf("encrypting\n");
 
 
 //int encrypted_length= publicEncryptWithFilename(plainData,sizeof(argv[2]),publicKeyFileName,encrypted);
@@ -104,6 +103,7 @@ if(encrypted_length == -1)
     printf("Encryption error\n");
     exit(0);
 }
+printf("Plain text length = %lu\n", strlen(argv[2]));
 printf("Encrypted length =%d\n",encrypted_length);
 FILE *fileDesc = fopen(argv[1], "w+");
 
