@@ -41,7 +41,7 @@ RSA * createRSA(unsigned char * key, int publicKey)
     keybio = BIO_new_mem_buf(key, -1);
     if (keybio==NULL)
     {
-        printf( "Failed to create key BIO");
+        printf( "Failed to create key BIO\n");
         return 0;
     }
     if(publicKey)
@@ -54,7 +54,8 @@ RSA * createRSA(unsigned char * key, int publicKey)
     }
     if(rsa == NULL)
     {
-        printf( "Failed to create RSA");
+        printf( "Failed to create RSA\n");
+        return 0;
     }
 
     return rsa;
@@ -103,7 +104,7 @@ if(encrypted_length == -1)
     printf("Encryption error\n");
     exit(0);
 }
-//printf("Encrypted length =%d\n",encrypted_length);
+printf("Encrypted length =%d\n",encrypted_length);
 FILE *fileDesc = fopen(argv[1], "w+");
 
 int bytesRead = fwrite(encrypted, encrypted_length,1, fileDesc);
