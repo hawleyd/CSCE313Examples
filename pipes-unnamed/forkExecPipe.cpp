@@ -22,11 +22,10 @@ int main() {
         exit(0); // Exit normally
     } 
     else { // Parent process
-        wait(NULL);
-        std::cout << "Hello from the parent process!\n";
-        std::cout << "Child  process ID was " << child_pid << std::endl;
-
         int status;
+        wait(&status);
+        std::cout << "Hello from the parent process!\n";
+        std::cout << "Child  process ID was " << child_pid << std::endl;        
         
         if (WIFEXITED(status)) {
             std::cout << "Child process exited normally with status: " << WEXITSTATUS(status) << std::endl;
