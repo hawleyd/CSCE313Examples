@@ -70,7 +70,9 @@ int publicEncryptWithFilename(unsigned char * data,int data_len, char *filename,
 
 int publicEncrypt(unsigned char * data,int data_len,unsigned char * key, unsigned char *encrypted)
 {
+    
     RSA * rsa = createRSA(key,1);
+    printf("here\n");
     int result = RSA_public_encrypt(data_len,data,encrypted,rsa,padding);
     return result;
 }
@@ -89,10 +91,11 @@ int main(int argc, char * argv[]){
 "-----END PUBLIC KEY-----\n";
  
 unsigned char  encrypted[4098]={};
-unsigned char plainData[sizeof(argv[2])];
+unsigned char plainData[4098] = {};
 
 char publicKeyFileName[] = "pubkey.pem";
-
+//bzero (encrypted, 4098);
+//bzero (plainData, sizeof(argv[2]));
 memcpy(plainData, argv[2], strlen(argv[2]));
 
 
