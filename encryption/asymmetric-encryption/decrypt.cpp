@@ -167,9 +167,9 @@ fclose(fileDesc);
 
 strcpy(globalPassword, passPhrase);
 
-int decrypted_length = privateDecryptWithFilename(encrypted,fileSize, privateKeyFileName, decrypted);
+//int decrypted_length = privateDecryptWithFilename(encrypted,fileSize, privateKeyFileName, decrypted);
 
-//int decrypted_length = privateDecrypt(encrypted,encrypted_length, privateKey, decrypted);
+int decrypted_length = privateDecrypt(encrypted,fileSize, privateKey, decrypted);
 if(decrypted_length == -1)
 {
     printf("Decryption error\n");
@@ -181,3 +181,4 @@ printf("Decrypted Text from %s = %s\n",argv[1], decrypted);
 
 
 }
+
